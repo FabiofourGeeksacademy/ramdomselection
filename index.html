@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="alumnos" id="alumnos">
+        <li>alumnos1</li>
+        <li>alumnos2</li>
+        <li>alumnos3</li>
+        <li>alumnos4</li>
+        <li>alumnos5</li>
+        <li>alumnos6</li>
+        <li>alumnos7</li>
+        <li>alumnos8</li>
+        <li>alumnos9</li>
+        <li>alumnos10</li>
+        <li>alumnos11</li>
+        <li>alumnos11</li>
+    </ul>
+
+
+    <ul class="seccion" id="seccion">
+        <li>navbar</li>
+        <li>navbar</li>
+        <li>first_heading</li>
+        <li>first_heading</li>
+        <li>services1</li>
+        <li>services1</li>
+        <li>portfolio</li>
+        <li>portfolio</li>
+        <li>contact</li>
+        <li>contact</li>
+        <li>services2</li>
+        <li>services2</li>
+    </ul>
+
+    <ul id="selecion">
+
+    </ul>
+
+    <a href="#" onclick="generarRamdom()">generar random</a>
+
+
+
+
+    <script>
+        function generateRandom(max) {
+            return Math.random() * max;
+        }
+
+        function selecionRamdom() {
+            let alumnoNumber = Math.floor(generateRandom(document.querySelectorAll('.alumnos > li').length))
+            let seccionNumber = Math.floor(generateRandom(document.querySelectorAll('.seccion > li').length))
+
+            let selecionado =
+                `${document.querySelectorAll('.alumnos > li')[alumnoNumber].textContent} - ${document.querySelectorAll('.seccion > li')[seccionNumber].textContent}`;
+            let selecion = document.getElementById('selecion');
+
+            let tag = document.createElement("li");
+            let text = document.createTextNode(selecionado);
+            tag.appendChild(text);
+            selecion.appendChild(tag)
+            let alumnosList = document.getElementById('alumnos');
+            alumnosList.removeChild(document.querySelectorAll('.alumnos > li')[alumnoNumber])
+            let seccionList = document.getElementById('seccion');
+            seccionList.removeChild(document.querySelectorAll('.seccion > li')[seccionNumber])
+        }
+
+        function generarRamdom() {
+            for (let index = 0; index < 12; index++) {
+                selecionRamdom()
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
